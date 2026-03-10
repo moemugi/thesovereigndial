@@ -1,0 +1,61 @@
+<ion-content [fullscreen]="true">
+  <ion-header slot="fixed" class="ion-no-border">
+      <ion-toolbar>
+          <ion-buttons slot="start" mode="md">
+              <ion-back-button defaultHref="/home" color="light"></ion-back-button>
+          </ion-buttons>
+
+          <ion-buttons slot="end" mode="ios">
+              <ion-button
+              fill="clear"
+              size="large"
+              color="light"
+              [routerLink]="['/', 'home', 'coffees', item?.id, 'cart']">
+              <ion-icon name="cart" slot="icon-only"></ion-icon>
+              @if(totalItem > 0) {
+                  <ion-badge>
+                      <ion-text>{{totalItem}}</ion-text>
+                  </ion-badge>
+              }
+          </ion-button>
+          </ion-buttons>
+      </ion-toolbar>
+  </ion-header>
+
+  <div [style.backgroundImage]="'url(' + server + item?.cover + ')'" class="bg">
+      <div class="rating" align="center">
+          <ion-icon name="star" color="warning"></ion-icon>
+          {{item?.rating}}
+      </div>
+  </div> 
+
+  <ion-item lines="none">
+      <ion-label>
+          {{item?.name | uppercase}}
+          <p class="desc">{{item?.description}}</p>
+          <p>
+              <ion-text color="medium">PHP</ion-text>
+              <ion-text color="dark" class="price">
+                  {{cartService.currency}}<span>{{item?.price}}</span>
+              </ion-text>
+          </p>
+      </ion-label>
+  </ion-item>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+      <ion-button  
+          size="large"
+          expand="block"
+          [strong]="true"
+          mode="ios"
+          [color]="addToCart ? 'success' : 'primary'"
+          (click)="addItem()">
+          <ion-icon
+              slot="start" 
+              name="cart"></ion-icon> <!-- Keep the cart icon always -->
+          <ion-text>{{addToCart ? 'Added to Cart' : 'Add to Cart'}}</ion-text>
+      </ion-button>
+  </ion-toolbar>
+</ion-footer>

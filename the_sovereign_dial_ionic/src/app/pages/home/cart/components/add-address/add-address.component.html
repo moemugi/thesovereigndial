@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Shipping Details</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+
+  <form [formGroup]="form">
+    <ion-list class="ion-margin">
+      <ion-input label=""
+      placeholder="Pincode*"
+      class="full-border"
+      type="number"
+      formControlName="pincode"
+      errorText="* Enter your pincode">
+    </ion-input>
+
+    <ion-input label=""
+      placeholder="House No., Building*"
+      class="full-border"
+      type="text"
+      formControlName="house_no"
+      errorText="* Enter your House No., building no.">
+    </ion-input>
+
+    <ion-input label=""
+      placeholder="Landmark"
+      class="full-border"
+      type="text"
+      formControlName="landmark">
+    </ion-input>
+
+    <ion-textarea
+    placeholder="Address*"
+    label=""
+    rows="1"
+    class="full-border"
+    [autoGrow]="true"
+    type="text"
+    formControlName="address"
+    errorText="* Enter your address">
+  </ion-textarea>
+
+  <ion-input label=""
+      placeholder="City/town*"
+      class="full-border"
+      type="text"
+      formControlName="city"
+      errorText="* Enter your city">
+    </ion-input>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-input
+        label=""
+        placeholder="State*"
+        class="full-border"
+        type="text"
+        formControlName="state"
+        errorText="* Enter your state">
+      </ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-input
+        label=""
+        placeholder="Country*"
+        class="full-border"
+        type="text"
+        formControlName="country"
+        errorText="* Enter your country">
+      </ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-input label=""
+      placeholder="Save as *"
+      labelPlacement="stacked"
+      placeholder="Home, Work etc."
+      type="text"
+      formControlName="save_as"
+      mode="md"
+      fill="outline"
+      errorText="* Enter the name what you want to save this address">
+    </ion-input>
+
+    <ion-item lines="none" class="ion-margin-vertical">
+      <ion-label>
+        Set as Primary Address
+      </ion-label>
+
+      <ion-toggle aria-label="address" slot="end" formControlName="primary"></ion-toggle>
+    </ion-item>
+    </ion-list>
+
+    <div class="ion-margin ion-padding-top">
+
+      @if(!isLoading) {
+        <ion-button expand="block" size="large" color="primary" (click)="save()">
+          <ion-text>Save & Proceed to Pay</ion-text>
+        </ion-button>
+      } @else {
+        <ion-button expand="block" size="large" color="primary">
+          <ion-spinner name="crescent"></ion-spinner>
+        </ion-button>
+      }
+    </div>
+  </form>
+
+</ion-content>

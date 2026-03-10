@@ -1,0 +1,7 @@
+{
+  "name": "coffee-shop-ngmodule-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
